@@ -56,17 +56,17 @@ Once installed, AI agents can automatically invoke this skill when you ask quest
 
 ## API Script Usage
 
-The included `rc-api` script simplifies API calls:
+The included `rc-api.sh` script simplifies API calls:
 
 ```bash
 # List projects (typically first call to get project ID)
-./revenuecat/scripts/rc-api /projects
+./revenuecat/scripts/rc-api.sh /projects
 
 # Get customers for a project
-./revenuecat/scripts/rc-api /projects/{project_id}/customers
+./revenuecat/scripts/rc-api.sh /projects/{project_id}/customers
 
 # Get a specific customer
-./revenuecat/scripts/rc-api /projects/{project_id}/customers/{customer_id}
+./revenuecat/scripts/rc-api.sh /projects/{project_id}/customers/{customer_id}
 ```
 
 The script automatically:
@@ -109,7 +109,7 @@ When adding new reference documentation:
 
 ### Updating the API Script
 
-When modifying the `rc-api` script:
+When modifying the `rc-api.sh` script:
 
 1. Maintain backward compatibility
 2. Keep error messages clear and actionable

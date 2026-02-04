@@ -10,8 +10,8 @@ if [[ -z "${RC_API_KEY:-}" ]]; then
 fi
 
 if [[ $# -lt 1 ]]; then
-  echo "Usage: rc-api <endpoint>" >&2
-  echo "Example: rc-api /projects" >&2
+  echo "Usage: rc-api.sh <endpoint>" >&2
+  echo "Example: rc-api.sh /projects" >&2
   exit 1
 fi
 

@@ -4,9 +4,9 @@ description: RevenueCat metrics, customer data, and documentation search. Use wh
 license: MIT
 metadata:
   {
-    "clawdbot":
+    "openclaw":
       {
-        "emoji": "📊",
+        "emoji": "😻",
         "requires": { "bins": ["curl"], "env": ["RC_API_KEY"] },
         "primaryEnv": "RC_API_KEY",
       },
@@ -28,10 +28,10 @@ Query the RevenueCat API (`GET /projects`) to get information about the project 
 ## API Access
 
 ```bash
-{baseDir}/scripts/rc-api <endpoint>
+{baseDir}/scripts/rc-api.sh <endpoint>
 ```
 
-Example: `{baseDir}/scripts/rc-api /projects` to list projects.
+Example: `{baseDir}/scripts/rc-api.sh /projects` to list projects.
 
 ## Local API Reference
 

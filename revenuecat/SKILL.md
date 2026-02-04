@@ -13,7 +13,7 @@ metadata:
   }
 ---
 
-# RevenueCat Intelligence
+# RevenueCat
 
 Query RevenueCat metrics and search documentation.
 

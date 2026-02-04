@@ -1,4 +1,4 @@
-# RevenueCat - AgentSkills Skill
+# RevenueCat - Intelligence Skill
 
 An [AgentSkills](https://agentskills.io)-compatible skill that enables AI agents to query RevenueCat metrics, customer data, and documentation. This skill provides AI tools with the ability to interact with the RevenueCat REST API v2 and search RevenueCat documentation.
 

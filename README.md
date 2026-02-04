@@ -11,8 +11,6 @@ An [AgentSkills](https://agentskills.io)-compatible skill that enables AI agents
 
 ## Prerequisites
 
-- `curl` command-line tool
-- `jq` JSON processor
 - A RevenueCat v2 secret API key (set as `RC_API_KEY` environment variable)
 
 ## Installation
@@ -30,12 +28,12 @@ An [AgentSkills](https://agentskills.io)-compatible skill that enables AI agents
 
 1. Clone this repository
 2. Configure the `RC_API_KEY` environment variable in your OpenClaw settings
-3. OpenClaw will automatically detect and load the skill from the `skill/` directory
+3. OpenClaw will automatically detect and load the skill from the `revenuecat/` directory
 
 ### For Other AgentSkills-Compatible Tools
 
 1. Clone this repository
-2. Point your AI tool to the `skill/` directory
+2. Point your AI tool to the `revenuecat/` directory
 3. Ensure the `RC_API_KEY` environment variable is set in your environment
 
 ## Usage
@@ -56,53 +54,19 @@ Once installed, AI agents can automatically invoke this skill when you ask quest
 "What are the rate limits for the RevenueCat API?"
 ```
 
-## Skill Structure
-
-```
-skill/
-├── SKILL.md                      # Main skill definition (AgentSkills format)
-├── scripts/
-│   └── rc-api                    # Bash wrapper for RevenueCat API calls
-└── references/                   # Domain-specific API documentation
-    ├── api-v2.md                 # Core API concepts (auth, pagination, expandables)
-    ├── customers.md              # Customer CRUD, attributes, subscriptions
-    ├── subscriptions.md          # Subscription management
-    ├── products.md               # Product operations
-    ├── offerings.md              # Offerings and packages
-    ├── entitlements.md           # Entitlement configuration
-    ├── purchases.md              # Purchase history and refunds
-    ├── projects.md               # Project and app configuration
-    ├── metrics.md                # Analytics and charts
-    ├── paywalls.md               # Paywall creation
-    ├── integrations.md           # Third-party integrations
-    ├── virtual-currencies.md     # Virtual currency operations
-    ├── error-handling.md         # Error codes and handling
-    └── rate-limits.md            # API rate limit information
-```
-
-### Design Philosophy
-
-The skill follows the AgentSkills principle of **progressive disclosure**:
-
-1. **Metadata** (~100 tokens): The skill name and description help agents determine when to use it
-2. **Core Instructions** (~1000 tokens): The main `SKILL.md` provides setup and navigation
-3. **Reference Files** (loaded on demand): Detailed documentation is loaded only when needed for specific tasks
-
-This structure minimizes context usage while providing comprehensive coverage of the RevenueCat API.
-
 ## API Script Usage
 
 The included `rc-api` script simplifies API calls:
 
 ```bash
 # List projects (typically first call to get project ID)
-./skill/scripts/rc-api /projects
+./revenuecat/scripts/rc-api /projects
 
 # Get customers for a project
-./skill/scripts/rc-api /projects/{project_id}/customers
+./revenuecat/scripts/rc-api /projects/{project_id}/customers
 
 # Get a specific customer
-./skill/scripts/rc-api /projects/{project_id}/customers/{customer_id}
+./revenuecat/scripts/rc-api /projects/{project_id}/customers/{customer_id}
 ```
 
 The script automatically:
@@ -151,16 +115,6 @@ When modifying the `rc-api` script:
 2. Keep error messages clear and actionable
 3. Test with various API endpoints
 
-## About AgentSkills
-
-AgentSkills is an open format for packaging instructions, scripts, and resources that AI agents can discover and use. Skills enable:
-
-- **Portability**: Write once, use across multiple AI tools
-- **Progressive Loading**: Load only what's needed to optimize context
-- **Domain Expertise**: Package specialized knowledge for reuse
-
-Learn more at [agentskills.io](https://agentskills.io)
-
 ## License
 
 This skill is licensed under the terms specified in [LICENSE](LICENSE).
@@ -170,7 +124,6 @@ This skill is licensed under the terms specified in [LICENSE](LICENSE).
 - [RevenueCat Documentation](https://www.revenuecat.com/docs)
 - [RevenueCat REST API v2 Reference](https://www.revenuecat.com/reference)
 - [AgentSkills Specification](https://agentskills.io/specification)
-- [AgentSkills GitHub](https://github.com/agentskills/agentskills)
 
 ## Support
 
@@ -182,8 +135,3 @@ For RevenueCat API questions:
 
 - Visit the [RevenueCat Help Center](https://support.revenuecat.com)
 - Check the [RevenueCat Documentation](https://www.revenuecat.com/docs)
-
-For AgentSkills format questions:
-
-- See the [AgentSkills Specification](https://agentskills.io/specification)
-- Visit the [AgentSkills GitHub](https://github.com/agentskills/agentskills)

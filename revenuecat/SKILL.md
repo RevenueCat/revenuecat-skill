@@ -7,7 +7,7 @@ metadata:
     "clawdbot":
       {
         "emoji": "📊",
-        "requires": { "bins": ["curl", "jq"], "env": ["RC_API_KEY"] },
+        "requires": { "bins": ["curl"], "env": ["RC_API_KEY"] },
         "primaryEnv": "RC_API_KEY",
       },
   }

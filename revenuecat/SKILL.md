@@ -1,6 +1,7 @@
 ---
 name: revenuecat
 description: RevenueCat metrics, customer data, and documentation search. Use when querying subscription analytics, MRR, churn, customers, or RevenueCat docs.
+license: MIT
 metadata:
   {
     "clawdbot":

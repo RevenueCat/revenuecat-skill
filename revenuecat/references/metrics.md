@@ -28,6 +28,30 @@ Available charts (static list):
 - trials_movement
 - trials_new
 
+### Additional Charts Information
+
+**Date Ranges**
+
+When querying charts, always limit the data you request by passing a start_date and end_date. If you omit these, the default range will be quite large and flood the context window.
+
+**Resolution**
+
+Important: When adding the `resolution` query parameter to a request, use the `id` value from the `resolutions` array returned by the `options` endpoint (e.g. "0" for day). Do not use the `display_name` value (e.g. "day"). However, the `options` endpoint is expensive so use it only when necessary.
+
+These values map to:
+
+| Resolution | ID  |
+| ---------- | --- |
+| Day        | 0   |
+| Week       | 1   |
+| Month      | 2   |
+| Quarter    | 3   |
+| Year       | 4   |
+
+**Partial/Incomplete Periods**
+
+The RevenueCat API returns partial data for the most recent period in a query, depending on the resolution. For example, if the resolution is set to `day`, the most recent day of data is considered incomplete. Keep this in mind when interpreting the data and providing insights or recommendations, as it’s not always appropriate to include the latest period in your analysis.
+
 ## Endpoints
 
 ### GET /projects/{project_id}/metrics/overview
@@ -46,7 +70,7 @@ Get overview metrics for a project
 Get chart data
 
 - **Params:** project_id (path, required) — ID of the project (e.g., "proj1ab2c3d4"), chart_name (path, required) — Name of the chart to retrieve. (e.g., "revenue")
-- **Query:** realtime (query, optional, default: true) — Whether to request real-time (v3) charts. Defaults to true. Set to false to request the v2 charts., filters (query, optional) — JSON array of chart filters. Each filter is a ChartFilter object. (e.g., "[{"name":"country","values":["US","UK"]}]"), selectors (query, optional) — JSON object of chart selectors. (e.g., "{"conversion_timeframe":"7_days","revenue_type":"proceeds"}"), currency (query, optional) — ISO 4217 currency code (e.g., "EUR"), resolution (query, optional) — Time resolution for the chart data. Use the chart options endpoint to discover available resolutions and their IDs. (e.g., "0"), start_date (query, optional) — Start date for the data range (ISO 8601 format) (e.g., "2024-01-01"), end_date (query, optional) — End date for the data range (ISO 8601 format) (e.g., "2024-12-31"), segment (query, optional) — Segment the data by this dimension. Use the chart options endpoint to discover available segments for a chart. (e.g., "country")
+- **Query:** realtime (query, optional, default: true) — Whether to request real-time (v3) charts. Defaults to true. Set to false to request the v2 charts., filters (query, optional) — JSON array of chart filters. Each filter is a ChartFilter object. (e.g., "[{"name":"country","values":["US","UK"]}]"), selectors (query, optional) — JSON object of chart selectors. (e.g., "{"conversion_timeframe":"7_days","revenue_type":"proceeds"}"), aggregate (query, optional) — Comma-separated aggregate operations to return in `summary` without raw `values`. (e.g., "average,total"), currency (query, optional) — ISO 4217 currency code (e.g., "EUR"), resolution (query, optional) — Time resolution for the chart data. Use the chart options endpoint to discover available resolutions and their IDs. (e.g., "0"), start_date (query, optional) — Start date for the data range (ISO 8601 format) (e.g., "2024-01-01"), end_date (query, optional) — End date for the data range (ISO 8601 format) (e.g., "2024-12-31"), segment (query, optional) — Segment the data by this dimension. Use the chart options endpoint to discover available segments for a chart. (e.g., "country")
 - **Response:**
   - object: enum: chart_data (required) — String representing the object's type. Objects of the same type share the same value.
   - category: string (required) — Category the chart belongs to (e.g., "revenue")
@@ -61,7 +85,7 @@ Get chart data
   - filtering_allowed: boolean — Whether filtering is allowed for this chart
   - segmenting_allowed: boolean — Whether segmentation is allowed for this chart
   - resolution: enum: day, week, month, quarter, year (required) — Time resolution of the data points (e.g., "day")
-  - values: array (required) — Chart data points. Structure varies by chart type - can be arrays of numbers or objects with timestamps and values.
+  - values: array (required) — Chart data points. Structure varies by chart type - can be arrays of numbers or objects with timestamps and values. Returned as an empty array when aggregate operations are requested.
   - summary: object, nullable — Summary statistics for the chart data
   - yaxis: string (required) — Y-axis configuration including unit (e.g., "$")
   - segments: array, nullable — Segment information when data is segmented

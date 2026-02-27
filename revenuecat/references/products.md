@@ -54,7 +54,7 @@ Delete a product
 
 - **Params:** project_id (path, required) — ID of the project (e.g., "proj1ab2c3d4"), product_id (path, required) — ID of the product (e.g., "prod1a2b3c4d5")
 - **Response:**
-  - object: enum: app, customer, entitlement, offering, package, product, virtual_currency, webhook_integration (required) — The type of the deleted object
+  - object: enum: app, customer, entitlement, offering, package, paywall, product, virtual_currency, webhook_integration (required) — The type of the deleted object
   - id: string (required) — The ID of the deleted object
   - deleted_at: integer(int64) (required) — The date when the object was deleted in ms since epoch (e.g., 1658399423658)
 - **Status:** public

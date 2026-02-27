@@ -52,7 +52,7 @@ Create an App
   - rc_billing: object, nullable — Revenue Cat Billing Store type details
     - stripe_account_id: string, nullable — It needs to be connected to your RevenueCat account. It can be omitted if you only have a single Stripe account connected to your RevenueCat account.
     - app_name: string (required) — Shown in checkout, emails, and receipts sent to customers.
-    - support_email: string, nullable — Used as the `reply to` address in all emails sent to customers, to allow them to receive support.  If you leave this field blank, your RevenueCat account email address will be used.
+    - support_email: string, nullable — Used as the `reply to` address in all emails sent to customers, to allow them to receive support. If you leave this field blank, your RevenueCat account email address will be used.
     - default_currency: enum: USD, EUR, JPY, GBP, AUD, CAD, BRL, KRW, CNY, MXN, ... (46 total) — ISO 4217 currency code (e.g., "USD")
   - roku: object, nullable — Roku Channel Store details. Should only be used when type is roku.
     - roku_api_key: string, nullable — Roku Pay API key provided on the Roku Pay Web Services page.
@@ -189,6 +189,25 @@ Get the StoreKit configuration for an app
 - **Response:**
   - object: enum: store_kit_config_file (required) — String representing the object's type. Objects of the same type share the same value.
   - contents: object (required) — Contents of the StoreKit config file
+- **Status:** public
+
+# Collaborator
+
+Operations about collaborators.
+
+## Endpoints
+
+### GET /projects/{project_id}/collaborators
+
+Get a list of collaborators
+
+- **Params:** project_id (path, required) — ID of the project (e.g., "proj1ab2c3d4")
+- **Query:** starting_after (query, optional) (e.g., "ent12354"), limit (query, optional, default: 20) (e.g., 10)
+- **Response:**
+  - object: enum: list (required) — String representing the object's type. Objects of the same type share the same value. Always has the value `list`.
+  - items: array (required) — Details about each object.
+  - next_page: string, nullable (required) — URL to access the next page of the project's collaborators. If not present / null, there is no next page (e.g., "/v2/projects/proj1ab2c3d4/collaborators?starting_after=collab1a2b3c4d5")
+  - url: string (required) — The URL where this list can be accessed. (e.g., "/v2/projects/proj1ab2c3d4/collaborators")
 - **Status:** public
 
 # Project

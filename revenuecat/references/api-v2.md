@@ -62,7 +62,11 @@ The API is organized by domain for progressive disclosure. Each domain contains 
 
 ### [projects.md](./projects.md)
 - App — Operations about apps.
+- Collaborator — Operations about collaborators.
 - Project — Operations about projects.
+
+### [audit-logs.md](./audit-logs.md)
+- Audit Log — Operations about audit logs.
 
 ### [metrics.md](./metrics.md)
 - Charts & Metrics — Operations about chart metrics.

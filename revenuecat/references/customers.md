@@ -46,7 +46,7 @@ Delete a customer
 
 - **Params:** project_id (path, required) — ID of the project (e.g., "proj1ab2c3d4"), customer_id (path, required) — ID of the customer (e.g., "19b8de26-77c1-49f1-aa18-019a391603e2")
 - **Response:**
-  - object: enum: app, customer, entitlement, offering, package, product, virtual_currency, webhook_integration (required) — The type of the deleted object
+  - object: enum: app, customer, entitlement, offering, package, paywall, product, virtual_currency, webhook_integration (required) — The type of the deleted object
   - id: string (required) — The ID of the deleted object
   - deleted_at: integer(int64) (required) — The date when the object was deleted in ms since epoch (e.g., 1658399423658)
 - **Status:** public
@@ -265,33 +265,6 @@ Update a virtual currencies balance without creating a transaction
   - url: string (required) — The URL where this list can be accessed. (e.g., "/v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/virtual_currencies")
 - **Status:** public
 
-### GET /projects/{project_id}/customers/blocked_customers
-
-List blocked customers
-
-- **Params:** project_id (path, required) — ID of the project (e.g., "proj1ab2c3d4")
-- **Response:**
-  - object: enum: blocked_customer (required) — String representing the object's type. Objects of the same type share the same value.
-- **Status:** beta
-
-### DELETE /projects/{project_id}/customers/blocked_customers/{customer_id}
-
-Remove a customer from the block list
-
-- **Params:** project_id (path, required) — ID of the project (e.g., "proj1ab2c3d4"), customer_id (path, required) — ID of the customer (e.g., "19b8de26-77c1-49f1-aa18-019a391603e2")
-- **Response:**
-  - (empty)
-- **Status:** beta
-
-### POST /projects/{project_id}/customers/blocked_customers/{customer_id}
-
-Add a customer to the block list
-
-- **Params:** project_id (path, required) — ID of the project (e.g., "proj1ab2c3d4"), customer_id (path, required) — ID of the customer (e.g., "19b8de26-77c1-49f1-aa18-019a391603e2")
-- **Response:**
-  - (empty)
-- **Status:** beta
-
 # Invoice
 
 Operations about invoices.
@@ -317,3 +290,44 @@ Get an invoice
 
 - **Params:** project_id (path, required) — ID of the project (e.g., "proj1ab2c3d4"), customer_id (path, required) — ID of the customer (e.g., "19b8de26-77c1-49f1-aa18-019a391603e2"), invoice_id (path, required) — ID of the invoice (e.g., "rcbin1a2b3c4d5e")
 - **Status:** public
+
+### GET /projects/{project_id}/customers/blocked_customers
+
+List blocked customers
+
+- **Params:** project_id (path, required) — ID of the project (e.g., "proj1ab2c3d4")
+- **Response:**
+  - object: enum: blocked_customer (required) — String representing the object's type. Objects of the same type share the same value.
+- **Status:** beta
+
+
+
+
+
+### DELETE /projects/{project_id}/customers/blocked_customers/{customer_id}
+
+Remove a customer from the block list
+
+- **Params:** project_id (path, required) — ID of the project (e.g., "proj1ab2c3d4"), customer_id (path, required) — ID of the customer (e.g., "19b8de26-77c1-49f1-aa18-019a391603e2")
+- **Response:**
+  - (empty)
+- **Status:** beta
+
+
+
+
+
+### POST /projects/{project_id}/customers/blocked_customers/{customer_id}
+
+Add a customer to the block list
+
+- **Params:** project_id (path, required) — ID of the project (e.g., "proj1ab2c3d4"), customer_id (path, required) — ID of the customer (e.g., "19b8de26-77c1-49f1-aa18-019a391603e2")
+- **Response:**
+  - (empty)
+- **Status:** beta
+
+# Invoice
+
+Operations about invoices.
+
+## Endpoints
